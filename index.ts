@@ -1,9 +1,4 @@
-console.log("hello world!");
-
-interface Cell {
-  alive: boolean;
-  neighbors: string[];
-}
+import { config } from "./appConfig";
 
 export interface CellMap {
   [key: string]: boolean;
@@ -76,7 +71,6 @@ function printUniverse(size: number, state: CellMap) {
   console.log(result);
 };
 
-const defaultSize = 25;
 const defaultSeed: CellMap = {
   "x12y12": true,
   "x13y12": true,
@@ -85,14 +79,14 @@ const defaultSeed: CellMap = {
   "x13y14": true,
 };
 
-async function main(iterations: number = 50, size: number = defaultSize, seed: CellMap = defaultSeed) {
+async function main(iterations: number = config.iterations, size: number = config.universeSize, seed: CellMap = defaultSeed) {
   let currentState = initUniverse(size, seed);
   for(let i = 0; i < iterations; i++) {
     printUniverse(size, currentState);
     console.log("---------",`iteration: ${i + 1}`, "---------");
     const next = getNextTick(size, currentState);
     currentState = next;
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 200));
   }
 }
 
