@@ -1,4 +1,4 @@
-import { config } from "./appConfig";
+import { config } from "../appConfig";
 
 export interface CellMap {
   [key: string]: boolean;
@@ -79,15 +79,15 @@ const defaultSeed: CellMap = {
   "x13y14": true,
 };
 
-async function main(iterations: number = config.iterations, size: number = config.universeSize, seed: CellMap = defaultSeed) {
+export function play(iterations: number = config.iterations, size: number = config.universeSize, seed: CellMap = defaultSeed) {
   let currentState = initUniverse(size, seed);
   for(let i = 0; i < iterations; i++) {
-    printUniverse(size, currentState);
-    console.log("---------",`iteration: ${i + 1}`, "---------");
-    const next = getNextTick(size, currentState);
-    currentState = next;
-    await new Promise(resolve => setTimeout(resolve, 200));
+    setTimeout(() => {
+      printUniverse(size, currentState);
+      console.log("---------",`iteration: ${i + 1}`, "---------");
+      const next = getNextTick(size, currentState);
+      currentState = next;
+    }, 200 * i);
   }
 }
 
-main();

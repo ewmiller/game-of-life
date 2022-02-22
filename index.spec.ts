@@ -1,4 +1,4 @@
-import { initUniverse, getNeighborIds, CellMap } from "./index";
+import { getNeighborIds, initUniverse } from "./src/index";
 
 test("it initialized the universe based on seed values", () => {
   const seed = {
@@ -23,7 +23,7 @@ test("it initialized the universe based on seed values", () => {
     "x3y1": false,
     "x3y2": false,
     "x3y3": false,
-  }
+  };
   const universe = initUniverse(4, seed);
   expect(universe).toEqual(expected)
 });
