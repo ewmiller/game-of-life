@@ -1,6 +1,6 @@
 import { getNeighborIds, initUniverse } from "./src/index";
 
-test("it initialized the universe based on seed values", () => {
+test("it initializes the universe based on seed values", () => {
   const seed = {
     "x1y1": true,
     "x1y2": true,
