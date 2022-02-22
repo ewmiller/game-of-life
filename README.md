@@ -1,6 +1,6 @@
 # Game of Life
 
-Coding challenge for TuneIn by Ethan Miller.
+Game of Life implementation by Ethan Miller.
 
 ## Instructions
 
